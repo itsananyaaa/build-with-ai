@@ -1,0 +1,4 @@
+backend/venv/
+venv/
+chroma_db/
+.DS_Store
