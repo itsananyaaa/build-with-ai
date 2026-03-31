@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+pydantic-settings
+passlib[bcrypt]
+python-jose[cryptography]
+python-multipart
+chromadb
+sentence-transformers
+google-generativeai
+SpeechRecognition
+gTTS
+celery
+redis
+python-dotenv

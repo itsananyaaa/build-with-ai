@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonaAI | Dynamic Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-mesh" id="chat-bg-mesh" style="display: none;">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Landing View -->
+    <div id="landing-view" class="view-section active-view">
+        <div class="landing-logo">
+            <h1 class="comic-logo">
+                <span class="c-blue">P</span><span class="c-yellow">e</span><span class="c-green">r</span><span class="c-red">s</span><span class="c-blue">o</span><span class="c-yellow">n</span><span class="c-green">a</span><span class="c-red">A</span><span class="c-blue">I</span>
+            </h1>
+        </div>
+        <div class="landing-card">
+            <h1 class="landing-title">
+                <span class="c-blue">H</span><span class="c-red">e</span><span class="c-yellow">y</span> 
+                <span class="c-green">t</span><span class="c-blue">h</span><span class="c-yellow">e</span><span class="c-red">r</span><span class="c-green">e</span> 👋
+            </h1>
+            <div class="landing-video-wrapper">
+                <video autoplay loop muted playsinline class="landing-video">
+                    <source src="promo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <h2 class="landing-subtitle" style="margin-top: 5px; font-size: 1.8rem;">Meet your AI companion 🤖</h2>
+
+            <button class="btn-outline" id="goto-login-btn">Get Started ➔</button>
+        </div>
+    </div>
+
+    <!-- Login View -->
+    <div id="login-view" class="view-section" style="display: none;">
+        <div class="login-card">
+            <h2>Welcome Back</h2>
+            <p>Sign in to access PersonaAI</p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Username</label>
+                    <input type="text" id="login-user" value="testuser" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="login-pass" value="password123" required>
+                </div>
+                <button type="submit" class="btn-filled">Login</button>
+            </form>
+            <div id="login-error" style="color: red; margin-top: 10px; font-size: 0.9em;"></div>
+        </div>
+    </div>
+
+    <div class="app-container view-section" id="app-container" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <h1 class="comic-logo comic-logo-sm">
+                    <span class="c-blue">P</span><span class="c-yellow">e</span><span class="c-green">r</span><span class="c-red">s</span><span class="c-blue">o</span><span class="c-yellow">n</span><span class="c-green">a</span><span class="c-red">A</span><span class="c-blue">I</span>
+                </h1>
+            </div>
+            
+            <div class="persona-selector">
+                <h3>Active Persona</h3>
+                <div class="persona-options" id="persona-list">
+                    <!-- Default Personas rendered on load -->
+                </div>
+            </div>
+
+            <div class="status-panel">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span id="connection-status">Connecting to Backend...</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-container glass-panel">
+            <header class="chat-header">
+                <div class="header-info">
+                    <h2 id="current-persona-name">Professional Persona</h2>
+                    <span class="active-emotion" id="current-emotion">Neutral State</span>
+                </div>
+                <div class="voice-controls">
+                    <select id="language-select" class="glass-select">
+                        <option value="English">🇬🇧 English</option>
+                        <option value="Malayalam">🇮🇳 Malayalam (മലയാളം)</option>
+                    </select>
+                    <label class="tts-toggle" title="Auto-Speak AI Responses">
+                        <input type="checkbox" id="tts-checkbox" checked>
+                        <span>🔊 Read Aloud</span>
+                    </label>
+                </div>
+            </header>
+
+            <div class="messages-area" id="messages-area">
+                <div class="message ai-message">
+                    <div class="message-content">Hello there! I'm your AI assistant. How can I help you today? Please authenticate first.</div>
+                </div>
+            </div>
+
+            <div class="suggestions-area" id="suggestions-area">
+                <!-- Dynamically populated tags -->
+            </div>
+
+            <div class="input-area">
+                <form id="chat-form">
+                    <button type="button" class="mic-btn" id="mic-btn" title="Speak">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                        </svg>
+                    </button>
+                    <input type="text" id="chat-input" placeholder="Type or speak your message..." autocomplete="off" required>
+                    <button type="submit" class="send-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
