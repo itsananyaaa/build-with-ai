@@ -1,6 +1,8 @@
 # PersonaAI 🤖✨
 
 ## Problem Statement
+Design a multilingual AI assistant supporting Malayalam and other regional languages
+
 Current AI assistants follow a rigid “one-size-fits-all” approach, where users must repeatedly provide detailed prompts to establish context, role, and intent. This creates friction and leads to generic, non-personalized responses.
 
 In reality, users are multi-dimensional—simultaneously acting as students, professionals, entrepreneurs, and fitness enthusiasts. Existing systems fail to manage these overlapping identities effectively, resulting in context confusion, lack of personalization, and inefficient user experiences.
@@ -57,6 +59,8 @@ Overall, Google Gemini acts as the **core reasoning engine**, while the backend 
 ---
 
 ## Proof of Google AI Usage
+
+Proof Folder: https://drive.google.com/drive/folders/1qwQaYGyMLIG7SNREV0VH5Zw2V4dNMTPe?usp=sharing
 
 <img width="1399" height="730" alt="Screenshot 2026-03-31 at 2 43 12 PM" src="https://github.com/user-attachments/assets/ce6c2cba-67e9-4606-b860-358905cb969b" />
 
