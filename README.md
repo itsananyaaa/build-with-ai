@@ -91,8 +91,39 @@ git clone https://github.com/itsananyaaa/build-with-ai.git
 # 2. Go into the project folder
 cd build-with-ai
 
-# 3. Install dependencies
-npm install
+# 3. Set up the backend
+## 3a. Navigate to backend directory
+cd backend
 
-# 4. Start the development server
-npm start
+## 3b. Create a virtual environment
+python3 -m venv venv
+
+## 3c. Activate the virtual environment
+source venv/bin/activate  # On macOS/Linux
+# or
+venv\Scripts\activate  # On Windows
+
+## 3d. Install backend dependencies
+pip install -r requirements.txt
+
+# 4. Set up the frontend
+## 4a. Navigate to frontend directory from root
+cd ../frontend
+
+# 5. Start the backend server (from backend directory)
+# Terminal 1 - Run from backend directory with venv activated
+python main.py
+# The backend will run on http://localhost:8000
+
+# 6. Start the frontend server (from frontend directory)
+# Terminal 2 - Run from frontend directory
+python -m http.server 3000
+# The frontend will run on http://localhost:3000
+
+# 7. Access the application
+# Open your browser and navigate to:
+http://localhost:3000
+
+# 8. Login credentials
+# Username: testuser
+# Password: password123
